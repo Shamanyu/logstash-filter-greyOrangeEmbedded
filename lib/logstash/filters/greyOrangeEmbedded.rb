@@ -20,6 +20,7 @@ class LogStash::Filters::GreyOrangeEmbedded < LogStash::Filters::Base
 			custom_event=LogStash::Event.new()
         		field_value=field_array[$counter].split(":")
 			custom_event["host"]=event["tags[0]"]
+			custom_event["tagfield"]="key".concat(($counter+1).to_s)
 			custom_event["service"]="butler_embedded"
 			custom_event["unixTime"]=event["unixTime"]
 			custom_event["severity"]=event["severity"]
